@@ -39,7 +39,7 @@ import spacy
 
 nlp = spacy.load('en_core_web_sm')
 
-from TextToConll import text_to_conll
+from TextToCoNLL import text_to_conll
 
 text_to_conll(text='He is walking on air. He is Michael Jordan.',
               nlp=nlp,
