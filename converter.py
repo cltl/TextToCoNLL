@@ -2,9 +2,11 @@ import os
 
 def text_to_conll(text,
                   nlp,
+                  delimiter,
                   output_dir,
                   basename,
                   spacy_attrs,
+                  default_values=dict(),
                   start_with_index=True,
                   overwrite_existing_conll_file=False,
                   verbose=0):
@@ -12,6 +14,7 @@ def text_to_conll(text,
 
     :param str text: a string containing text
     :param nlp: spaCy model
+    :param delimiter: the column delimiter
     :param str output_dir: the path to the output directory
     (will be created if it does not exists)
     :param str basename: the basename of the file
@@ -20,6 +23,9 @@ def text_to_conll(text,
     i.e., for the token and the lemma ['text', 'lemma_']
     :param bool starts_with_index:
     if True, the first column is the token index of the token in the sentence
+    :param dict default_values: a dictionary mapping the spaCy attr to a self-defined default value
+e.g., {"ent_type_" : "O"}. The spaCy attribute has to be part of the argument "spacy_attrs".
+    :param bool start_with_index: if True, the column is the index of the token in the sentence
     :param bool overwrite_existing_conll_file:
     if True and the basename already exists in the output folder, it will be overwritten
     if False and the basename already exists in the output folder, an Exception is raised.
@@ -31,6 +37,9 @@ def text_to_conll(text,
             print(f'recreated the output dir at {output_dir}')
 
     output_path = os.path.join(output_dir, basename)
+
+    for attr in default_values:
+        assert attr in spacy_attrs, f'{attr} is not part of spacy_attrs, can not set default value.'
 
     if all([not overwrite_existing_conll_file,
             os.path.exists(output_path)]):
@@ -53,10 +62,14 @@ def text_to_conll(text,
                 info.append(str(index))
 
             for attr in spacy_attrs:
-                value = getattr(token, attr)
+
+                if attr in default_values:
+                    value = default_values[attr]
+                else:
+                    value = getattr(token, attr)
                 info.append(value)
 
-            outfile.write('\t'.join(info) +'\n')
+            outfile.write(delimiter.join(info) +'\n')
 
             index += 1
 
