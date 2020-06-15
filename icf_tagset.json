@@ -1,0 +1,32 @@
+{
+  "name" : "WHO ICF",
+  "typeUiName" : null,
+  "description" : "Tagset for WHO ICF classification",
+  "language" : "nl",
+  "type" : null,
+  "type_name" : null,
+  "type_description" : null,
+  "tags" : [ {
+    "tag_name" : "B370: Spiersterkte",
+    "tag_description" : "Functies gerelateerd aan de kracht ontwikkeld door de contractie van een spier of van spiergroepen. Inclusie: sterkte van geïsoleerde spieren en spiergroepen, sterkte van spieren in één ledemaat, sterkte van spieren in één lichaamszijde, sterkte van spieren in onderste lichaamshelft, sterkte van spieren in alle ledematen, sterkte van rompspieren, en sterkte van alle spieren in het lichaam; stoornissen zoals bij zwakte van kleine voet- en handspieren, parese, paralyse, monoplegie, hemiplegie, paraplegie, quadriplegie en akinetisch mutisme. Exclusie: functies van aan oog verwante structuren (b215); spiertonus (b735); spieruithoudingsvermogen (b740)"
+  }, {
+    "tag_name" : "B1300: Energie",
+    "tag_description" : "Algemene mentale functies gerelateerd aan fysiologische en psychologische mechanismen die ervoor zorgen dat het individu volhardend streeft naar het voldoen aan bepaalde behoeften en algemene doelen. Inclusie: energieniveau, motivatie, begeerte, hunkering (met inbegrip van hunkering naar stoffen die verslaving veroorzaken), en driftbeheersing. Exclusie: bewustzijn (b110); temperament en persoonlijkheid (b126); slaap (b134); psychomotorische functies (b147); stemming (b152e"
+  }, {
+    "tag_name" : "B152: Stemming",
+    "tag_description" : "Specifieke mentale functies gerelateerd aan het gevoel en aan de affectieve componenten van mentale processen. Inclusie: adequaatheid van stemming, regulering van stemming en bereik van stemmingen; affect, droefheid, geluk, liefde, vrees, boosheid, haat, gespannenheid, angst, vreugde, verdriet; labiliteit; emotionele vervlakking. Exclusie: temperament en persoonlijkheid (b126); energie en driften (b130)"
+  }, {
+    "tag_name" : "D450: Lopen en zich verplaatsen",
+    "tag_description" : "Loopvermogen"
+  }, {
+    "tag_name" : "Laag",
+    "tag_description" : "Minimaal"
+  }, {
+    "tag_name" : "Middel",
+    "tag_description" : "Middel"
+  }, {
+    "tag_name" : "Hoog",
+    "tag_description" : "Hoog"
+  } ],
+  "create_tag" : false
+}
