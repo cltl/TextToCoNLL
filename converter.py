@@ -78,7 +78,12 @@ e.g., {"ent_type_" : "O"}. The spaCy attribute has to be part of the argument "s
                     value = getattr(token, attr)
                 info.append(value)
 
-            outfile.write(delimiter.join(info) +'\n')
+            the_line = delimiter.join(info) +'\n'
+            outfile.write(the_line)
+
+            needed = sum([start_with_index]) + len(spacy_attrs)
+            observed = the_line.split(delimiter)
+            assert len(observed) == needed, f'mismatch between required num of columns {needed} and observed {len(observed)}'
 
             index += 1
 
