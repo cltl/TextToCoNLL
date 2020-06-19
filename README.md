@@ -31,6 +31,7 @@ The function **text_to_conll** has the following arguments:
 * spacy_attrs: the list of spaCy attrs to use a columns, e.g., ['text', 'lemma_']
 * default_values: a dictionary mapping the spaCy attr to a self-defined default value
 e.g., {"ent_type_" : "O"}. The spaCy attribute has to be part of the argument "spacy_attrs".
+* exclude: ignore tokens for which these attributes are True, e.g., all tokens that have "is_space" as True.
 * start_with_index: if True, the first column is the index
 * overwrite_existing_conll_file: if False, do not allow do overwrite existing files
 * verbose: if 1 or higher, logging information will be sent to stdout
@@ -42,13 +43,14 @@ nlp = spacy.load('en_core_web_sm')
 
 from TextToCoNLL import text_to_conll
 
-text_to_conll(text='He is walking on air. He is Michael Jordan.',
+text_to_conll(text='He is walking on air.    He is Michael Jordan.',
               nlp=nlp,
               delimiter="  ",
               output_dir='TextToConll/output',
               basename='example.conll',
               spacy_attrs=['text', 'lemma_', 'ent_type_'],
               default_values={'ent_type_': "O"},
+              exclude=["is_space"],
               start_with_index=True,
               verbose=1)
 ```

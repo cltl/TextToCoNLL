@@ -7,6 +7,7 @@ def text_to_conll(text,
                   basename,
                   spacy_attrs,
                   default_values=dict(),
+                  exclude=[],
                   start_with_index=True,
                   overwrite_existing_conll_file=False,
                   verbose=0):
@@ -56,6 +57,14 @@ e.g., {"ent_type_" : "O"}. The spaCy attribute has to be part of the argument "s
                     token.i != 0]):
                 outfile.write('\n')
                 index = 1
+
+            excluded=False
+            for attr_to_exclude in exclude:
+                value = getattr(token, attr_to_exclude)
+                if value:
+                    excluded = True
+            if excluded:
+                continue
 
             info = []
             if start_with_index:
